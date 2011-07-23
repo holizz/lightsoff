@@ -3,11 +3,18 @@
 */
 
 jQuery(function($){
-  var size = 5;
-  for (var i = 0; i < size; i++)
-    $('#board').append('<tr></tr>');
-  for (var i = 0; i < size; i++)
-    $('#board tr').append('<td><button class="light on"></button></td>');
+
+  var loadGame = function(game) {
+    $('#board .light').removeClass('off').addClass('on');
+    game = game.replace(/\|/g, '');
+
+    var i = 0;
+    $('#board .light').each(function(){
+      if (game[i]==='0')
+        $(this).toggleOnOff();
+      i++;
+    });
+  }
 
   $.fn.toggleOnOff = function(){
     if ($(this).is('.light'))
@@ -15,6 +22,16 @@ jQuery(function($){
     else if (this.length > 0)
       $(this).find('.light').toggleOnOff();
   };
+
+  // Create board
+
+  var size = 5;
+  for (var i = 0; i < size; i++)
+    $('#board').append('<tr></tr>');
+  for (var i = 0; i < size; i++)
+    $('#board tr').append('<td><button class="light on"></button></td>');
+
+  // Allow buttons to be pressed
 
   $('.light').click(function(){
     var n = $(this).parent().prevAll().length + 1;
@@ -27,4 +44,8 @@ jQuery(function($){
 
     return false;
   });
+
+  // Set up game
+
+  loadGame('00000|00100|01110|10100|11000');
 });
