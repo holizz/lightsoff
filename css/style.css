@@ -213,29 +213,31 @@ table { border-collapse: collapse; border-spacing: 0; }
    Author: 
    ========================================================================== */
 
+body {
+  background: black;
+}
+
 #container {
   width: 100%;
   max-width: 320px;
+  margin: 0 auto;
 }
 
 .light {
   width: 62px;
   height: 62px;
   display:inline-block;
+  -moz-border-radius:7px;
+  -webkit-border-radius:7px;
   border-radius:7px;
-  border:1px solid #83c41a;
 }
 
 .light.on {
-  -moz-box-shadow: 0px 1px 0px 0px #c1ed9c;
-  -webkit-box-shadow: 0px 1px 0px 0px #c1ed9c;
-  box-shadow: 0px 1px 0px 0px #c1ed9c;
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #9dce2c), color-stop(1, #8cb82b) );
   background:-moz-linear-gradient( center top, #9dce2c 5%, #8cb82b 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9dce2c', endColorstr='#8cb82b');
   background-color:#9dce2c;
-  -moz-border-radius:7px;
-  -webkit-border-radius:7px;
+  border:1px solid #78924f;
 }
 .no-touch .light.on:hover {
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8cb82b), color-stop(1, #9dce2c) );
@@ -249,15 +251,11 @@ table { border-collapse: collapse; border-spacing: 0; }
 }
 
 .light.off {
-  -moz-box-shadow: 0px 1px 0px 0px #c1ed9c;
-  -webkit-box-shadow: 0px 1px 0px 0px #c1ed9c;
-  box-shadow: 0px 1px 0px 0px #c1ed9c;
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #66851c), color-stop(1, #4f6618) );
   background:-moz-linear-gradient( center top, #66851c 5%, #4f6618 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#66851c', endColorstr='#4f6618');
   background-color:#66851c;
-  -moz-border-radius:7px;
-  -webkit-border-radius:7px;
+  border:1px solid #4a5a30;
 }
 .no-touch .light.off:hover {
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4f6618), color-stop(1, #66851c) );
