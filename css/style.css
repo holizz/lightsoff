@@ -227,9 +227,9 @@ body {
   width: 62px;
   height: 62px;
   display:inline-block;
-  -moz-border-radius:7px;
-  -webkit-border-radius:7px;
-  border-radius:7px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
 }
 
 .light.on {
