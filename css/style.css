@@ -215,12 +215,22 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 body {
   background: black;
+  color: white;
 }
 
-#container {
+.container {
   width: 100%;
   max-width: 320px;
   margin: 0 auto;
+}
+
+#board {
+  width: 320px;
+  height: 320px;
+}
+
+.meta {
+  height: 160px;
 }
 
 .light {

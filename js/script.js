@@ -42,6 +42,8 @@ jQuery(function($){
     $(this).parents('tr').prev().find('td:nth-child('+n+')').toggleOnOff();
     $(this).parents('tr').next().find('td:nth-child('+n+')').toggleOnOff();
 
+    $('#move-counter').val(parseInt($('#move-counter').val()) + 1);
+
     return false;
   });
 
