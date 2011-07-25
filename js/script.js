@@ -4,16 +4,21 @@
 
 
 var LightsOff = Class.$extend({
+  levels: [
+    '00000|00100|01110|10100|11000',
+    '00000|00110|01110|10100|01000'
+  ],
+
   __init__: function(data) {
     this.board = $(data.board);
     this.moveCounter = $(data.moveCounter);
+    this.levelCounter = $(data.levelCounter);
 
     this.defineFunctions();
     this.createBoard();
     this.mapHandlers();
 
-    //this.loadLevel('00000|00110|01110|10100|01000');
-    this.loadLevel('00000|00100|01110|10100|11000');
+    this.loadLevel(this.levels[0]);
   },
 
   defineFunctions: function() {
@@ -36,7 +41,7 @@ var LightsOff = Class.$extend({
   mapHandlers: function() {
     var thus = this;
 
-    $('.light').click(function(){
+    $('.light', this.board).click(function(){
       var n = $(this).parent().prevAll().length + 1;
 
       $(this).toggleOnOff();
@@ -46,6 +51,8 @@ var LightsOff = Class.$extend({
       $(this).parents('tr').next().find('td:nth-child('+n+')').toggleOnOff();
 
       thus.moveCounter.val(parseInt(thus.moveCounter.val()) + 1);
+
+      thus.endOfLevel();
 
       return false;
     });
@@ -61,12 +68,27 @@ var LightsOff = Class.$extend({
         $(this).toggleOnOff();
       i++;
     });
+  },
+
+  endOfLevel: function() {
+    if($('.light', this.board).filter('.on').length > 0)
+      return;
+
+    this.victoryAnimation();
+    this.levelCounter.val(parseInt(this.levelCounter.val()) + 1);
+    var next = this.levels[parseInt(this.levelCounter.val()) - 1];
+    this.loadLevel(next);
+  },
+
+  victoryAnimation: function() {
+    console.log('victoryAnimation');
   }
 });
 
 jQuery(function($){
   new LightsOff({
     board: '#board',
-    moveCounter: '#move-counter'
+    moveCounter: '#move-counter',
+    levelCounter: '#level-counter'
   });
 });
